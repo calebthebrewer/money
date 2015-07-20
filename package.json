@@ -1,0 +1,49 @@
+{
+  "name": "pckgs",
+  "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/helpdotcom/ws-metrocity.git"
+  },
+  "scripts": {
+    "build": "gulp build",
+    "postinstall": "bower install"
+  },
+  "dependencies": {
+    "assert-dotenv": "^2.0.0",
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "fs-extra": "^0.18.2",
+    "help-esb": "^0.6.7",
+    "lodash": "^3.10.0",
+    "lokijs": "^1.3.4",
+    "mkdirp": "^0.5.1",
+    "newrelic": "^1.18.3",
+    "node-persist": "^0.0.5",
+    "npm": "^2.12.0",
+    "q": "^1.4.1",
+    "socket.io": "^1.3.5",
+    "socket.io-client": "^1.3.5",
+    "spawn-cmd": "0.0.2",
+    "win-spawn": "^2.0.0"
+  },
+  "devDependencies": {
+    "bower": "^1.4.1",
+    "gulp": "^3.8.11",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.5.2",
+    "gulp-csslint": "^0.1.5",
+    "gulp-eslint": "^0.11.1",
+    "gulp-minify-css": "^1.1.1",
+    "gulp-minify-html": "^1.0.2",
+    "gulp-ng-html2js": "^0.2.0",
+    "gulp-nodemon": "^2.0.3",
+    "gulp-replace": "^0.5.3",
+    "gulp-sass": "^2.0.0",
+    "gulp-sourcemaps": "^1.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp-watch": "^4.2.4",
+    "main-bower-files": "^2.7.0"
+  }
+}

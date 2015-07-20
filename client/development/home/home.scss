@@ -1,0 +1,22 @@
+.text-large {
+	font-size: 1.6em;
+	line-height: 46px;
+	margin-left: 4px;
+}
+
+.position-absolute {
+	position: absolute;
+}
+
+.position-relative {
+	position: relative;
+}
+
+.transaction-fancy-input-container {
+	.transaction-date,
+	.transaction-time {
+		top: 100%;
+		left: -100px;
+	}
+}
+

@@ -1,0 +1,150 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '--save',
+1 verbose cli   'node-persist' ]
+2 info using npm@2.10.1
+3 info using node@v0.12.4
+4 verbose install initial load of C:\dev\money\package.json
+5 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\angularjs-scroll-glue\package.json
+6 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\assert-dotenv\package.json
+7 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\body-parser\package.json
+8 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\bower\package.json
+9 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\express\package.json
+10 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\fs-extra\package.json
+11 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp\package.json
+12 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-clean\package.json
+13 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-concat\package.json
+14 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-csslint\package.json
+15 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-eslint\package.json
+16 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-minify-css\package.json
+17 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-minify-html\package.json
+18 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-ng-html2js\package.json
+19 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-nodemon\package.json
+20 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-sass\package.json
+21 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-sourcemaps\package.json
+22 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-uglify\package.json
+23 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\gulp-watch\package.json
+24 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\help-esb\package.json
+25 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\lodash\package.json
+26 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\lokijs\package.json
+27 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\main-bower-files\package.json
+28 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\newrelic\package.json
+29 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\node-persist\package.json
+30 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\npm\package.json
+31 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\socket.io\package.json
+32 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\socket.io-client\package.json
+33 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\spawn-cmd\package.json
+34 verbose installManyTop reading scoped package data from C:\dev\money\node_modules\win-spawn\package.json
+35 info package.json bower@1.4.1 No license field.
+36 info package.json node-persist@0.0.3 license should be a valid SPDX license expression
+37 info package.json win-spawn@2.0.0 license should be a valid SPDX license expression
+38 info package.json angularjs-scroll-glue@2.0.4 No repository field.
+39 info package.json angularjs-scroll-glue@2.0.4 No license field.
+40 info package.json gulp-clean@0.3.1 No license field.
+41 info package.json gulp-eslint@0.11.1 No license field.
+42 info package.json gulp-minify-html@1.0.3 No license field.
+43 info package.json gulp-ng-html2js@0.2.0 No license field.
+44 info package.json lokijs@1.3.4 license should be a valid SPDX license expression
+45 info package.json newrelic@1.20.2 No license field.
+46 info package.json socket.io@1.3.5 No license field.
+47 info package.json spawn-cmd@0.0.2 license should be a valid SPDX license expression
+48 verbose readDependencies loading dependencies from C:\dev\money\package.json
+49 verbose install node-persist is installed as 0.0.3
+50 silly cache add args [ 'node-persist', null ]
+51 verbose cache add spec node-persist
+52 silly cache add parsed spec { raw: 'node-persist',
+52 silly cache add   scope: null,
+52 silly cache add   name: 'node-persist',
+52 silly cache add   rawSpec: '',
+52 silly cache add   spec: '*',
+52 silly cache add   type: 'range' }
+53 silly addNamed node-persist@*
+54 verbose addNamed "*" is a valid semver range for node-persist
+55 silly addNameRange { name: 'node-persist', range: '*', hasData: false }
+56 silly mapToRegistry name node-persist
+57 silly mapToRegistry using default registry
+58 silly mapToRegistry registry https://registry.npmjs.org/
+59 silly mapToRegistry uri https://registry.npmjs.org/node-persist
+60 verbose addNameRange registry:https://registry.npmjs.org/node-persist not in flight; fetching
+61 verbose request uri https://registry.npmjs.org/node-persist
+62 verbose request no auth needed
+63 info attempt registry request try #1 at 2:31:32 PM
+64 verbose request id cd30b74613d4bf96
+65 verbose etag "3DIEPTOCEBZM3CKMT5WJXRXVO"
+66 http request GET https://registry.npmjs.org/node-persist
+67 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+68 info attempt registry request try #2 at 2:31:42 PM
+69 verbose etag "3DIEPTOCEBZM3CKMT5WJXRXVO"
+70 http request GET https://registry.npmjs.org/node-persist
+71 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+72 info attempt registry request try #3 at 2:32:42 PM
+73 verbose etag "3DIEPTOCEBZM3CKMT5WJXRXVO"
+74 http request GET https://registry.npmjs.org/node-persist
+75 silly get cb [ 304, undefined ]
+76 verbose etag https://registry.npmjs.org/node-persist from cache
+77 verbose get saving node-persist to C:\Users\Caleb\AppData\Roaming\npm-cache\registry.npmjs.org\node-persist\.cache.json
+78 silly addNameRange number 2 { name: 'node-persist', range: '*', hasData: true }
+79 silly addNameRange versions [ 'node-persist',
+79 silly addNameRange   [ '0.0.0', '0.0.1', '0.0.2', '0.0.3', '0.0.4' ] ]
+80 silly addNamed node-persist@0.0.4
+81 verbose addNamed "0.0.4" is a plain semver version for node-persist
+82 silly mapToRegistry name node-persist
+83 silly mapToRegistry using default registry
+84 silly mapToRegistry registry https://registry.npmjs.org/
+85 silly mapToRegistry uri https://registry.npmjs.org/node-persist
+86 verbose addRemoteTarball https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz not in flight; adding
+87 verbose addRemoteTarball [ 'https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz',
+87 verbose addRemoteTarball   'dfd36b15e86eb064a062352884b0b98703ed62e5' ]
+88 info retry fetch attempt 1 at 2:32:42 PM
+89 info attempt registry request try #1 at 2:32:42 PM
+90 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+91 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+92 info attempt registry request try #2 at 2:32:52 PM
+93 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+94 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+95 info attempt registry request try #3 at 2:33:52 PM
+96 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+97 error fetch failed https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+98 warn retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+99 info retry fetch attempt 2 at 2:34:02 PM
+100 info attempt registry request try #1 at 2:34:02 PM
+101 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+102 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+103 info attempt registry request try #2 at 2:34:12 PM
+104 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+105 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+106 info attempt registry request try #3 at 2:35:12 PM
+107 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+108 error fetch failed https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+109 warn retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+110 info retry fetch attempt 3 at 2:36:12 PM
+111 info attempt registry request try #1 at 2:36:12 PM
+112 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+113 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+114 info attempt registry request try #2 at 2:36:22 PM
+115 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+116 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org
+117 info attempt registry request try #3 at 2:37:22 PM
+118 http fetch GET https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+119 error fetch failed https://registry.npmjs.org/node-persist/-/node-persist-0.0.4.tgz
+120 verbose stack Error: getaddrinfo ENOTFOUND registry.npmjs.org
+120 verbose stack     at errnoException (dns.js:44:10)
+120 verbose stack     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:94:26)
+121 verbose cwd C:\dev\money
+122 error Windows_NT 6.3.9600
+123 error argv "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "--save" "node-persist"
+124 error node v0.12.4
+125 error npm  v2.10.1
+126 error code ENOTFOUND
+127 error errno ENOTFOUND
+128 error syscall getaddrinfo
+129 error network getaddrinfo ENOTFOUND registry.npmjs.org
+129 error network This is most likely not a problem with npm itself
+129 error network and is related to network connectivity.
+129 error network In most cases you are behind a proxy or have bad network settings.
+129 error network
+129 error network If you are behind a proxy, please make sure that the
+129 error network 'proxy' config is set properly.  See: 'npm help config'
+130 verbose exit [ 1, true ]
