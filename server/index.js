@@ -1,7 +1,6 @@
 'use strict';
 
 var bodyParser = require('body-parser');
-var fs = require('fs-extra');
 var path = require('path');
 
 //express server
@@ -14,6 +13,8 @@ app.set('client', 'client/production');
 
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, '..', app.get(('client')))));
+
+require('./integrations')(app);
 
 server.listen(app.get('port'), function () {
 	console.log('Doin\' something fun over at :' + app.get('port'));
