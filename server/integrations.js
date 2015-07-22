@@ -1,7 +1,9 @@
 'use strict';
 
+var fs = require('fs');
 var google = require('googleapis');
 var googleAuth = require('google-auth-library');
+var path = require('path');
 
 module.exports = function(app) {
 	app.get('/integrations/google-drive', function(req, res) {
@@ -19,7 +21,14 @@ module.exports = function(app) {
 	});
 
 	app.get('/integrations/google-drive/callback', function(req, res) {
-		req;
-		res.send();
+		if (!req.query.code) {
+			return res.send(req.body);
+		}
+		fs.readFile(path.join(__dirname, 'callback.html'), 'utf8', function (error, file) {
+			if (error) {
+				return res.send(error);
+			}
+			res.send(file.replace('{{TOKEN}}', req.query.code));
+		});
 	});
 };

@@ -29,7 +29,9 @@
 				<ul ng-controller="integrations" class="dropdown-menu">
 					<li>
 						<a ng-click="integrate('google-drive')" href="#">
-							<span class="glyphicon glyphicon-share"></span>
+							<span class="glyphicon"
+								  ng-class="{'glyphicon-share': !integrations['google-drive'], 'glyphicon-check': integrations['google-drive']}">
+							</span>
 							Google Drive
 						</a>
 					</li>
