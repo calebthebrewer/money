@@ -22,7 +22,7 @@ angular.module('money')
 			};
 
 			this.getDay = function getDay(day) {
-				return googleDrive.getAll();
+				return dropbox.getAll();
 			};
 
 		}

@@ -6,10 +6,18 @@ angular.module('money')
 			'use strict';
 
 			var client = new Dropbox.Client({ key: 'ghvr0jtvuv7ii8p' });
+			window.blah = client;
 
-			client.authDriver(new Dropbox.AuthDriver.Popup({
-				receiverUrl: "http://localhost/integrations/dropbox/callback"}));
-
+			this.authenticate = function authenticate() {
+				return $q(function(resolve, reject) {
+					client.authenticate(function (error, response) {
+						if (error) {
+							return reject(error);
+						}
+						resolve(response);
+					});
+				});
+			};
 
 			this.setToken = function setToken(token) {
 				return localStorage.setItem('money.integrations.dropbox', token);
