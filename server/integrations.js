@@ -16,7 +16,7 @@ module.exports = function(app) {
 
 		res.send(oauth2Client.generateAuthUrl({
 			access_type: 'offline',
-			scope: ['https://www.googleapis.com/auth/drive.metadata.readonly']
+			scope: ['https://www.googleapis.com/auth/drive']
 		}));
 	});
 

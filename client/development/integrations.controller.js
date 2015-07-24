@@ -2,11 +2,13 @@ angular.module('money')
 	.controller('integrations', [
 		'$http',
 		'$scope',
-		function($http, $scope) {
+		'data',
+		function($http, $scope, data) {
 			var integrations = {};
 
 			$scope.integrations = {
-				'google-drive': localStorage.getItem('money.integrations.google-drive')
+				'google-drive': data.getToken('google-drive'),
+				dropbox: data.getToken('dropbox')
 			};
 
 			$scope.integrate = function integrate(service) {
@@ -16,11 +18,13 @@ angular.module('money')
 
 				$http
 					.get('/integrations/' + service)
-					.success(function(data) {
-						integrations[service] = window.open(data, 'Connect to Drive', 'width=480,height=480');
+					.success(function(requestUrl) {
+						integrations[service] = window.open(requestUrl, 'Connect to Drive', 'width=480,height=480');
 						var listener = window.addEventListener('message', function(message) {
-							localStorage.setItem('money.integrations.' + service, message.data);
+							data.setToken(service, message.data);
 							$scope.integrations[service] = message.data;
+
+							// cleanup
 							window.removeEventListener(listener);
 							integrations[service].close();
 							delete integrations[service];

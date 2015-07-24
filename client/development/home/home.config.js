@@ -8,6 +8,14 @@ angular.module('home')
 				.state('home', {
 					url: '/',
 					templateUrl: 'home/home.tpl.html',
-					controller: 'home'
+					controller: 'home',
+					resolve: {
+						transactions: [
+							'data',
+							function(data) {
+								return data.getDay();
+							}
+						]
+					}
 				});
 		}]);

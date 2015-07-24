@@ -1,13 +1,15 @@
 angular.module('home')
 	.controller('home', [
 		'$scope',
-		function ($scope) {
+		'data',
+		'transactions',
+		function ($scope, data, transactions) {
 			'use strict';
 
 			$scope.date = Date.now();
 			$scope.time = Date.now();
 
-			$scope.transactions = JSON.parse(localStorage.getItem('transactions')) || [];
+			$scope.transactions = transactions || [];
 
 			$scope.sum = function sum() {
 				var total = 0;
