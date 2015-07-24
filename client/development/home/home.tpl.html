@@ -11,35 +11,14 @@
 				<label class="sr-only" for="description">description product or service</label>
 				<input ng-model="description" type="text" class="form-control input-lg" name="description" id="description" placeholder="description product or service" required>
 			</div>
-			<!--<div class="form-group">
-				<label class="sr-only" for="timepicker">transaction date</label>
-				<div class="transaction-fancy-input-container position-relative">
-					<button ng-click="showTimePicker=!showTimePicker" class="btn btn-default form-control input-lg">
-						{{time | date:'h:mm'}}
-					</button>
-					<timepicker ng-model="time"
-								type="time"
-								class="transaction-time position-absolute panel panel-default"
-								ng-class="{hidden: !showTimePicker}"
-								name="timepicker"
-								id="timepicker"></timepicker>
-				</div>
-			</div>
 			<div class="form-group">
-				<label class="sr-only" for="datepicker">transaction date</label>
-				<div class="transaction-fancy-input-container position-relative">
-					<button ng-click="showDatePicker=!showDatePicker" class="btn btn-default form-control input-lg">
-						{{date | date:'M/dd'}}
-					</button>
-					<datepicker ng-model="date"
-								ng-click="showDatePicker=false"
-								type="date"
-								class="transaction-date position-absolute panel panel-default"
-								ng-class="{hidden: !showDatePicker}"
-								name="datepicker"
-								id="datepicker"></datepicker>
-				</div>
-			</div>-->
+				<label class="sr-only" for="timepicker">transaction date</label>
+				<timepicker ng-model="time"
+							type="time"
+							name="timepicker"
+							class="transaction-time"
+							id="timepicker"></timepicker>
+			</div>
 
 			<div class="form-group">
 				<button type="submit" class="btn btn-primary form-control input-lg">Submit</button>

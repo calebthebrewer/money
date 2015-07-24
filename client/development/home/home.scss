@@ -12,11 +12,9 @@
 	position: relative;
 }
 
-.transaction-fancy-input-container {
-	.transaction-date,
-	.transaction-time {
-		top: 100%;
-		left: -100px;
+.transaction-time {
+	input[type="text"] {
+		width: 100%;
 	}
 }
 

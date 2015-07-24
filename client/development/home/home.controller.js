@@ -1,15 +1,28 @@
 angular.module('home')
 	.controller('home', [
 		'$scope',
-		'data',
-		'transactions',
-		function ($scope, data, transactions) {
+		'dropbox',
+		function ($scope, dropbox) {
 			'use strict';
 
-			$scope.date = Date.now();
-			$scope.time = Date.now();
+			$scope.time = new Date();
 
-			$scope.transactions = transactions || [];
+			$scope.transactions = [];
+			dropbox
+				.getDay()
+				.then(function (transactions) {
+					$scope.transactions = transactions;
+				})
+				.catch(function (error) {
+					if (error.error.indexOf('not found') > -1) {
+						dropbox
+							.getRecurring()
+							.then(function (transactions) {
+								$scope.transactions = transactions;
+								dropbox.saveDay(transactions);
+							});
+					}
+				});
 
 			$scope.sum = function sum() {
 				var total = 0;
@@ -27,13 +40,14 @@ angular.module('home')
 					amount: $scope.amount,
 					description: $scope.description,
 					location: null,
-					timestamp: Date.now()
+					timestamp: $scope.time
 				});
 
-				localStorage.setItem('transactions', JSON.stringify($scope.transactions));
+				dropbox.saveDay($scope.transactions);
 
 				$scope.amount = null;
 				$scope.description = null;
+				$scope.time = new Date();
 			};
 		}
 	]);

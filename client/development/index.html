@@ -15,9 +15,6 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li>
-				<a ui-sref="player" ui-sref-active="active" class="nav-link">By Day</a>
-			</li>
-			<li>
 				<a ui-sref="recurring" ui-sref-active="active" class="nav-link">Recurring</a>
 			</li>
 		</ul>
@@ -28,7 +25,7 @@
 				</a>
 				<ul ng-controller="integrations" class="dropdown-menu">
 					<li>
-						<a ng-click="integrate('dropbox')" href="#">
+						<a ng-click="authenticate()" href="#">
 							<span class="glyphicon"
 								  ng-class="{'glyphicon-share': !integrations['dropbox'], 'glyphicon-check': integrations['dropbox']}">
 							</span>

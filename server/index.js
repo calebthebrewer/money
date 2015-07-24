@@ -14,8 +14,6 @@ app.set('client', 'client/production');
 app.use(bodyParser());
 app.use(express.static(path.join(__dirname, '..', app.get(('client')))));
 
-//require('./integrations')(app);
-require('./google-drive')(app);
 require('./dropbox')(app);
 
 server.listen(app.get('port'), function () {
