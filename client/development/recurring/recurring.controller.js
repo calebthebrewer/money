@@ -1,10 +1,17 @@
 angular.module('recurring')
 	.controller('recurring', [
 		'$scope',
-		function ($scope) {
+		'dropbox',
+		function ($scope, dropbox) {
 			'use strict';
 
-			$scope.recurringTransactions = JSON.parse(localStorage.getItem('recurring-transactions')) || [];
+			$scope.recurringTransactions = [];
+
+			dropbox
+				.getRecurring()
+				.then(function (transactions) {
+					$scope.recurringTransactions = transactions;
+				});
 
 			$scope.addRecurringTransaction = function addRecurringTransaction() {
 				$scope.recurringTransactions.push({
@@ -24,7 +31,7 @@ angular.module('recurring')
 			};
 
 			function saveRecurringTransactions() {
-				localStorage.setItem('recurring-transactions', JSON.stringify($scope.transactions));
+				dropbox.saveRecurring($scope.recurringTransactions);
 			}
 		}
 	]);

@@ -111,7 +111,7 @@ angular.module('money')
 						.post(
 							'https://api-content.dropbox.com/1/files_put/auto/recurring.json' +
 							'?overwrite=true&access_token=' + token,
-						reject
+							data
 						)
 						.success(resolve)
 						.error(reject);

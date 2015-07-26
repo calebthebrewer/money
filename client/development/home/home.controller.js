@@ -10,11 +10,11 @@ angular.module('home')
 			$scope.transactions = [];
 			dropbox
 				.getDay()
-				.then(function (transactions) {
+				.then	(function (transactions) {
 					$scope.transactions = transactions;
 				})
 				.catch(function (error) {
-					if (error.error.indexOf('not found') > -1) {
+					if (error && error.error.indexOf('not found') > -1) {
 						dropbox
 							.getRecurring()
 							.then(function (transactions) {
@@ -36,10 +36,8 @@ angular.module('home')
 
 			$scope.addTransaction = function addTransaction() {
 				$scope.transactions.push({
-					type: 'expense',
 					amount: $scope.amount,
 					description: $scope.description,
-					location: null,
 					timestamp: $scope.time
 				});
 
