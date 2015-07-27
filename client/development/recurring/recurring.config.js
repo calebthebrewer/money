@@ -8,6 +8,18 @@ angular.module('recurring')
 				.state('recurring', {
 					url: '/recurring',
 					templateUrl: 'recurring/recurring.tpl.html',
-					controller: 'recurring'
+					controller: 'recurring',
+					resolve: {
+						transactions: [
+							'dropbox',
+							function (dropbox) {
+								return dropbox
+									.getRecurring()
+									.catch(function () {
+										return [];
+									});
+							}
+						]
+					}
 				});
 		}]);

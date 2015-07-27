@@ -2,27 +2,13 @@ angular.module('home')
 	.controller('home', [
 		'$scope',
 		'dropbox',
-		function ($scope, dropbox) {
+		'transactions',
+		function ($scope, dropbox, transactions) {
 			'use strict';
 
 			$scope.time = new Date();
 
-			$scope.transactions = [];
-			dropbox
-				.getDay()
-				.then	(function (transactions) {
-					$scope.transactions = transactions;
-				})
-				.catch(function (error) {
-					if (error && error.error.indexOf('not found') > -1) {
-						dropbox
-							.getRecurring()
-							.then(function (transactions) {
-								$scope.transactions = transactions;
-								dropbox.saveDay(transactions);
-							});
-					}
-				});
+			$scope.transactions = transactions;
 
 			$scope.sum = function sum() {
 				var total = 0;
@@ -47,5 +33,46 @@ angular.module('home')
 				$scope.description = null;
 				$scope.time = new Date();
 			};
+
+			$scope.removeTransaction = function removeTransaction(index) {
+				$scope.transactions.splice(index, 1);
+				dropbox.saveDay($scope.transactions);
+			};
+
+			$scope.addRecurringTransactions = function addRecurringTransactions() {
+				dropbox
+					.getRecurring()
+					.then(function (transactions) {
+						var now = new Date();
+						var year = now.getFullYear();
+						// get the number of days in this month
+						var daysInMonth = new Date(year, now.getMonth(), 0).getDate();
+						// get the number of days in this year
+						var daysInYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0) ? 366 : 365;
+
+						transactions.forEach(function (transaction) {
+							var divisor;
+							switch (transaction.frequency) {
+								case 'weekly':
+									divisor = 7;
+									break;
+								case 'monthly':
+									divisor = daysInMonth;
+									break;
+								case 'yearly':
+									divisor = daysInYear;
+									break;
+								default:
+									divisor = 1;
+									break;
+							}
+
+							transaction.amount = Math.round((transaction.amount / divisor) * 100) / 100;
+							$scope.transactions.push(transaction);
+						});
+
+						dropbox.saveDay($scope.transactions);
+					});
+			}
 		}
 	]);

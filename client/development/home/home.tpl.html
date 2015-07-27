@@ -8,7 +8,7 @@
 				<input ng-model="amount" type="number" class="form-control input-lg" name="amount" id="amount" placeholder="amount" required>
 			</div>
 			<div class="form-group">
-				<label class="sr-only" for="description">description product or service</label>
+				<label class="sr-only" for="description">description</label>
 				<input ng-model="description" type="text" class="form-control input-lg" name="description" id="description" placeholder="description product or service" required>
 			</div>
 			<div class="form-group">
@@ -28,6 +28,11 @@
 </div>
 <div class="container">
 	<h2>Day's Summary</h2>
+	<p ng-if="!transactions.length">
+		This day seems empty.
+		<a href="#" ng-click="addRecurringTransactions()">Add recurring transactions</a>
+		to get it started.
+	</p>
 	<table class="table">
 		<thead>
 			<tr>
@@ -50,11 +55,19 @@
 		<div class="col-sm-2">
 			${{transaction.amount}}
 		</div>
-		<div class="col-sm-8">
+		<div class="col-sm-7">
+			<span ng-if="transaction.recurring"
+				  title="Recurring Transaction"
+				  class="glyphicon glyphicon-repeat"></span>
 			{{transaction.description}}
 		</div>
 		<div class="col-sm-2">
 			{{transaction.timestamp | date:'h:mm on M/dd'}}
+		</div>
+		<div class="col-sm-1 text-right">
+			<a ng-click="removeTransaction($index)" href="#" class="text-danger">
+				<span class="glyphicon glyphicon-remove"></span>
+			</a>
 		</div>
 	</li>
 </ol>

@@ -8,6 +8,18 @@ angular.module('home')
 				.state('home', {
 					url: '/',
 					templateUrl: 'home/home.tpl.html',
-					controller: 'home'
+					controller: 'home',
+					resolve: {
+						transactions: [
+							'dropbox',
+							function (dropbox) {
+								return dropbox
+									.getDay()
+									.catch(function () {
+										return [];
+									});
+							}
+						]
+					}
 				});
 		}]);

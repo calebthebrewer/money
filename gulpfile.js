@@ -28,9 +28,8 @@ var jsFiles = [
 var allJsFiles = jsFiles.concat('server/**/*.js');
 
 var vendorJsFiles = [
-  './node_modules/dropbox/lib/dropbox.js',
-  './node_modules/socket.io-client/socket.io.js'
 ];
+
 var vendorFontFiles = [
   './bower_components/bootstrap/fonts/*.*'
 ];

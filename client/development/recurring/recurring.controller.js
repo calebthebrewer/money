@@ -2,27 +2,25 @@ angular.module('recurring')
 	.controller('recurring', [
 		'$scope',
 		'dropbox',
-		function ($scope, dropbox) {
+		'transactions',
+		function ($scope, dropbox, transactions) {
 			'use strict';
 
-			$scope.recurringTransactions = [];
-
-			dropbox
-				.getRecurring()
-				.then(function (transactions) {
-					$scope.recurringTransactions = transactions;
-				});
+			$scope.recurringTransactions = transactions;
 
 			$scope.addRecurringTransaction = function addRecurringTransaction() {
 				$scope.recurringTransactions.push({
 					amount: $scope.amount,
-					description: $scope.description
+					description: $scope.description,
+					frequency: $scope.frequency,
+					recurring: true
 				});
 
 				saveRecurringTransactions();
 
 				$scope.amount = null;
 				$scope.description = null;
+				$scope.frequency = 'daily';
 			};
 
 			$scope.removeRecurringTransaction = function removeTransaction(index) {
