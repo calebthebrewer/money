@@ -21,18 +21,33 @@ angular.module('home')
 			};
 
 			$scope.addTransaction = function addTransaction() {
-				$scope.transactions.push({
+				var transaction = {
 					amount: $scope.amount,
 					description: $scope.description,
 					timestamp: $scope.time
-				});
+				};
 
+				if (navigator.geolocation) {
+					navigator.geolocation.getCurrentPosition(function (location) {
+						transaction.location = {
+							longitude: location.coords.longitude,
+							latitude: location.coords.latitude
+						};
+
+						actuallyAddTransaction(transaction)
+					});
+				} else {
+					actuallyAddTransaction(transaction);
+				}
+			};
+
+			function actuallyAddTransaction(transaction) {
+				$scope.transactions.push(transaction);
 				dropbox.saveDay($scope.transactions);
-
 				$scope.amount = null;
 				$scope.description = null;
 				$scope.time = new Date();
-			};
+			}
 
 			$scope.removeTransaction = function removeTransaction(index) {
 				$scope.transactions.splice(index, 1);
