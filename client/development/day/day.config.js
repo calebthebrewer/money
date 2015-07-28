@@ -9,12 +9,15 @@ angular.module('day')
 					url: '/:year/:month/:day',
 					templateUrl: 'day/day.tpl.html',
 					controller: 'day',
+					reloadOnSearch: true,
 					resolve: {
 						transactions: [
+							'$stateParams',
 							'dropbox',
-							function (dropbox) {
+							function ($stateParams, dropbox) {
+								$stateParams;
 								return dropbox
-									.getDay()
+									.getDay($stateParams.year + '/' + $stateParams.month + '/' + $stateParams.day)
 									.catch(function () {
 										return [];
 									});

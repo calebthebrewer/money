@@ -1,12 +1,13 @@
 angular.module('day')
 	.controller('day', [
 		'$scope',
+		'$stateParams',
 		'dropbox',
 		'transactions',
-		function ($scope, dropbox, transactions) {
+		function ($scope, $stateParams, dropbox, transactions) {
 			'use strict';
 
-			$scope.time = new Date();
+			var day = $stateParams.year + '/' + $stateParams.month + '/' + $stateParams.day;
 
 			$scope.transactions = transactions;
 
@@ -24,7 +25,7 @@ angular.module('day')
 				var transaction = {
 					amount: $scope.amount,
 					description: $scope.description,
-					timestamp: $scope.time
+					timestamp: new Date()
 				};
 
 				if (navigator.geolocation) {
@@ -43,7 +44,7 @@ angular.module('day')
 
 			function actuallyAddTransaction(transaction) {
 				$scope.transactions.push(transaction);
-				dropbox.saveDay($scope.transactions);
+				dropbox.saveDay($scope.transactions, day);
 				$scope.amount = null;
 				$scope.description = null;
 				$scope.time = new Date();
@@ -86,7 +87,7 @@ angular.module('day')
 							$scope.transactions.push(transaction);
 						});
 
-						dropbox.saveDay($scope.transactions);
+						dropbox.saveDay($scope.transactions, day);
 					});
 			}
 		}
