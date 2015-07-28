@@ -15,7 +15,6 @@ angular.module('day')
 							'$stateParams',
 							'dropbox',
 							function ($stateParams, dropbox) {
-								$stateParams;
 								return dropbox
 									.getDay($stateParams.year + '/' + $stateParams.month + '/' + $stateParams.day)
 									.catch(function () {

@@ -35,7 +35,7 @@ angular.module('day')
 							latitude: location.coords.latitude
 						};
 
-						actuallyAddTransaction(transaction)
+						actuallyAddTransaction(transaction);
 					});
 				} else {
 					actuallyAddTransaction(transaction);
@@ -64,7 +64,7 @@ angular.module('day')
 						// get the number of days in this month
 						var daysInMonth = new Date(year, now.getMonth(), 0).getDate();
 						// get the number of days in this year
-						var daysInYear = ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0) ? 366 : 365;
+						var daysInYear = ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0) ? 366 : 365;
 
 						transactions.forEach(function (transaction) {
 							var divisor;
@@ -89,6 +89,6 @@ angular.module('day')
 
 						dropbox.saveDay($scope.transactions, day);
 					});
-			}
+			};
 		}
 	]);

@@ -4,6 +4,8 @@ angular.module('money')
 		'$scope',
 		'dropbox',
 		function($http, $scope, dropbox) {
+			'use strict';
+
 			$scope.authenticate = function() {
 				dropbox.authenticate();
 			};
