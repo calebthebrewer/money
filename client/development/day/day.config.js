@@ -1,14 +1,14 @@
-angular.module('home')
+angular.module('day')
 	.config([
 		'$stateProvider',
 		function ($stateProvider) {
 			'use strict';
 
 			$stateProvider
-				.state('home', {
-					url: '/',
-					templateUrl: 'home/home.tpl.html',
-					controller: 'home',
+				.state('day', {
+					url: '/:year/:month/:day',
+					templateUrl: 'day/day.tpl.html',
+					controller: 'day',
 					resolve: {
 						transactions: [
 							'dropbox',

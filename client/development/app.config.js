@@ -4,6 +4,8 @@ angular.module('money')
 		function ($urlRouterProvider) {
 			'use strict';
 
+			var now = new Date();
+
 			$urlRouterProvider
-				.otherwise('/');
+				.otherwise('/' + now.getFullYear() + '/' + (now.getMonth() + 1) + '/' + now.getDate());
 		}]);

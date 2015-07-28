@@ -1,5 +1,5 @@
-angular.module('home')
-	.controller('home', [
+angular.module('day')
+	.controller('day', [
 		'$scope',
 		'dropbox',
 		'transactions',
