@@ -7,10 +7,16 @@ angular.module('money')
 
 			this.authenticate = function authenticate() {
 				return $q(function(resolve, reject) {
-					var requestUrl = 'https://www.dropbox.com/1/oauth2/authorize?client_id=ghvr0jtvuv7ii8p&redirect_uri=' +
-						encodeURIComponent('http://' + location.host + '/integrations/dropbox/callback') +
+					var requestUrl = 'https:////www.dropbox.com/1/oauth2/authorize?client_id=ghvr0jtvuv7ii8p&redirect_uri=' +
+						encodeURIComponent(location.protocol + '//' + location.host + '/integrations/dropbox/callback') +
 						'&response_type=token';
-					var popup = window.open(requestUrl, 'Connect to Dropbox', 'width=480,height=480,left=100,top=100,scrollbars');
+
+					var width = 480;
+					var height = 480;
+					var left = (window.screen.width / 2) - ((width / 2) + 10);
+					var top = (window.screen.height / 2) - ((height / 2) + 50);
+					var popup = window.open(requestUrl, 'Connect to Dropbox', 'width=' + width + ',height=' + height +
+						',left=' + left + ',top=' + top + ',screenX=' + left + ',screenY=' + top + ',scrollbars');
 
 					var listener = window.addEventListener('message', function(message) {
 						var auth = {};
