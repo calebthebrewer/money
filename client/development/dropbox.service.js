@@ -8,7 +8,7 @@ angular.module('money')
 			this.authenticate = function authenticate() {
 				return $q(function(resolve, reject) {
 					var requestUrl = 'https://www.dropbox.com/1/oauth2/authorize?client_id=ghvr0jtvuv7ii8p&redirect_uri=' +
-						encodeURIComponent(location.host + '/integrations/dropbox/callback') +
+						encodeURIComponent('http://' + location.host + '/integrations/dropbox/callback') +
 						'&response_type=token';
 					var popup = window.open(requestUrl, 'Connect to Dropbox', 'width=480,height=480,left=100,top=100,scrollbars');
 
