@@ -19,47 +19,49 @@
 	</div>
 </div>
 <div class="container">
-	<h2>Day's Summary</h2>
-	<p ng-if="!transactions.length">
-		This day seems empty.
-		<a href="#" ng-click="addRecurringTransactions()">Add recurring transactions</a>
-		to get it started.
-	</p>
-	<table class="table">
-		<thead>
+	<div class="row">
+		<h2>Day's Summary</h2>
+		<p ng-if="!transactions.length">
+			This day seems empty.
+			<a href="#" ng-click="addRecurringTransactions()">Add recurring transactions</a>
+			to get it started.
+		</p>
+		<table class="table">
+			<thead>
 			<tr>
 				<th>Total</th>
 			</tr>
-		</thead>
-		<tbody>
+			</thead>
+			<tbody>
 			<tr class="text-large">
 				<td ng-class="{'text-danger': sum<0, 'text-success': sum>1}">
 					${{sum}}
 				</td>
 			</tr>
-		</tbody>
-	</table>
-</div>
-<ol class="list-group container">
-	<li ng-repeat="transaction in transactions track by $index"
-		class="list-group-item row transaction {{transaction.type}}"
+			</tbody>
+		</table>
+	</div>
+	<ol class="row list-group">
+		<li ng-repeat="transaction in transactions track by $index"
+			class="list-group-item row transaction {{transaction.type}}"
 			ng-class="{'text-danger': transaction.amount<0, 'text-success': transaction.amount>1}">
-		<div class="col-sm-2">
-			${{transaction.amount}}
-		</div>
-		<div class="col-sm-7">
+			<div class="col-sm-2">
+				${{transaction.amount}}
+			</div>
+			<div class="col-sm-7">
 			<span ng-if="transaction.recurring"
 				  title="Recurring Transaction"
 				  class="glyphicon glyphicon-repeat"></span>
-			{{transaction.description}}
-		</div>
-		<div class="col-sm-2">
-			{{transaction.timestamp | date:'h:mm on M/dd'}}
-		</div>
-		<div class="col-sm-1 text-right">
-			<button ng-click="removeTransaction($index)" class="text-danger btn-link">
-				<span class="glyphicon glyphicon-remove"></span>
-			</button>
-		</div>
-	</li>
-</ol>
+				{{transaction.description}}
+			</div>
+			<div class="col-sm-2">
+				{{transaction.timestamp | date:'h:mm on M/dd'}}
+			</div>
+			<div class="col-sm-1 text-right">
+				<button ng-click="removeTransaction($index)" class="text-danger btn-link">
+					<span class="glyphicon glyphicon-remove"></span>
+				</button>
+			</div>
+		</li>
+	</ol>
+</div>
