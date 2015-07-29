@@ -1,0 +1,15 @@
+.month {
+	height: 100%;
+
+	.week {
+		height: 19%;
+
+		.one-seventh {
+			$width: percentage(1/7);
+			height: 100%;
+			width: $width;
+			display: inline-block;
+			margin-bottom: 0;
+		}
+	}
+}
