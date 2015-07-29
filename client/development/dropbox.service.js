@@ -5,6 +5,8 @@ angular.module('money')
 		function ($http, $q) {
 			'use strict';
 
+			var self;
+
 			this.authenticate = function authenticate() {
 				return $q(function(resolve, reject) {
 					var requestUrl = 'https:////www.dropbox.com/1/oauth2/authorize?client_id=ghvr0jtvuv7ii8p&redirect_uri=' +
@@ -53,20 +55,7 @@ angular.module('money')
 					day = today();
 				}
 
-				return $q(function(resolve, reject) {
-					var token = this.getToken();
-					if (!token) {
-						return reject();
-					}
-
-					$http
-						.get(
-							'https://api-content.dropbox.com/1/files/auto/' +
-							day + '.json?access_token=' + token
-						)
-						.success(resolve)
-						.error(reject);
-				}.bind(this));
+				return getDropbox(day);
 			};
 
 			this.saveDay = function saveDay(data, day) {
@@ -74,61 +63,84 @@ angular.module('money')
 					day = today();
 				}
 
-				return $q(function(resolve, reject) {
-					var token = this.getToken();
-					if (!token) {
-						return reject();
-					}
+				return postDropbox(day, data);
+			};
 
-					$http
-						.post(
-							'https://api-content.dropbox.com/1/files_put/auto/' +
-							day + '.json?overwrite=true&access_token=' + token,
-							data
-						)
-						.success(resolve)
-						.error(reject);
-				}.bind(this));
+			this.getMonth = function getMonth(month) {
+				if (!month) {
+					month = today(true);
+				}
+
+				return getDropbox(month);
+			};
+
+			this.saveMonthDay = function saveMonth(data, month, day) {
+				this.getMonth(month)
+					.then(function(days) {
+						days[day] = data;
+
+						return days;
+					})
+					.catch(function() {
+						var days = {};
+						days[day] = data;
+
+						return days;
+					})
+					.then(function (days) {
+						return postDropbox(month, days);
+					});
 			};
 
 			this.getRecurring = function getRecurring() {
+				return getDropbox('recurring');
+			};
+
+			this.saveRecurring = function saveRecurring(data) {
+				return postDropbox('recurring', data);
+			};
+
+			self = this;
+
+			function getDropbox(path) {
 				return $q(function(resolve, reject) {
-					var token = this.getToken();
+					var token = self.getToken();
 					if (!token) {
 						return reject();
 					}
 
 					$http
 						.get(
-							'https://api-content.dropbox.com/1/files/auto/recurring.json' +
-							'?access_token=' + token
-						)
+						'https://api-content.dropbox.com/1/files/auto/' + path + '.json' +
+						'?access_token=' + token
+					)
 						.success(resolve)
 						.error(reject);
-				}.bind(this));
-			};
+				});
+			}
 
-			this.saveRecurring = function saveRecurring(data) {
+			function postDropbox(path, data) {
 				return $q(function(resolve, reject) {
-					var token = this.getToken();
+					var token = self.getToken();
 					if (!token) {
 						return reject();
 					}
 
 					$http
 						.post(
-							'https://api-content.dropbox.com/1/files_put/auto/recurring.json' +
-							'?overwrite=true&access_token=' + token,
-							data
-						)
+						'https://api-content.dropbox.com/1/files_put/auto/' + path + '.json' +
+						'?overwrite=true&access_token=' + token,
+						data
+					)
 						.success(resolve)
 						.error(reject);
-				}.bind(this));
-			};
+				});
+			}
 
-			function today() {
+			function today(noDay) {
 				var date = new Date();
-				return date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
+				return date.getFullYear() + '/' + (date.getMonth() + 1) +
+					(noDay) ? '' : '/' + date.getDate();
 			}
 		}
 	]);

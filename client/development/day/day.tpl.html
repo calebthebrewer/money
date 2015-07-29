@@ -33,8 +33,8 @@
 		</thead>
 		<tbody>
 			<tr class="text-large">
-				<td ng-class="{'text-danger': sum()<0, 'text-success': sum()>1}">
-					${{sum()}}
+				<td ng-class="{'text-danger': sum<0, 'text-success': sum>1}">
+					${{sum}}
 				</td>
 			</tr>
 		</tbody>
@@ -57,9 +57,9 @@
 			{{transaction.timestamp | date:'h:mm on M/dd'}}
 		</div>
 		<div class="col-sm-1 text-right">
-			<a ng-click="removeTransaction($index)" href="#" class="text-danger">
+			<button ng-click="removeTransaction($index)" class="text-danger btn-link">
 				<span class="glyphicon glyphicon-remove"></span>
-			</a>
+			</button>
 		</div>
 	</li>
 </ol>

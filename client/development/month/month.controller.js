@@ -2,29 +2,18 @@ angular.module('month')
 	.controller('month', [
 		'$scope',
 		'$stateParams',
-		'dropbox',
-		function ($scope, $stateParams, dropbox) {
+		'days',
+		function ($scope, $stateParams, days) {
 			'use strict';
 
-			var now = new Date();
+			var now = new Date($stateParams.year, $stateParams.month - 1, 0);
 
-			$scope.year = now.getFullYear();
-			$scope.month = now.getMonth() + 1;
+			$scope.year = $stateParams.year;
+			$scope.month = $stateParams.month;
 
-			var days = {};
 			$scope.days = days;
+			$scope.dayOffset = now.getDay();
+			$scope.daysInMonth = now.getDate();
 
-			var numberOfDays = daysInMonth(now.getMonth() + 1, now.getFullYear());
-			var dayOffset = now.getDay();
-			for (var i = 0; i < numberOfDays; i++) {
-				 days[i + dayOffset] = {
-					 amount: 45,
-					 day: i
-				 };
-			}
-
-			function daysInMonth(month, year) {
-				return new Date(year, month, 0).getDate();
-			}
 		}
 	]);

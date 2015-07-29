@@ -11,15 +11,7 @@ angular.module('day')
 
 			$scope.transactions = transactions;
 
-			$scope.sum = function sum() {
-				var total = 0;
-
-				$scope.transactions.forEach(function (transaction) {
-					total += parseInt(transaction.amount);
-				});
-
-				return total;
-			};
+			$scope.sum = sum();
 
 			$scope.addTransaction = function addTransaction() {
 				var transaction = {
@@ -44,7 +36,7 @@ angular.module('day')
 
 			function actuallyAddTransaction(transaction) {
 				$scope.transactions.push(transaction);
-				dropbox.saveDay($scope.transactions, day);
+				saveDay();
 				$scope.amount = null;
 				$scope.description = null;
 				$scope.time = new Date();
@@ -52,7 +44,7 @@ angular.module('day')
 
 			$scope.removeTransaction = function removeTransaction(index) {
 				$scope.transactions.splice(index, 1);
-				dropbox.saveDay($scope.transactions);
+				saveDay();
 			};
 
 			$scope.addRecurringTransactions = function addRecurringTransactions() {
@@ -87,8 +79,28 @@ angular.module('day')
 							$scope.transactions.push(transaction);
 						});
 
-						dropbox.saveDay($scope.transactions, day);
+						saveDay();
 					});
 			};
+
+			function saveDay() {
+				$scope.sum = sum();
+
+				dropbox.saveMonthDay({
+					amount: $scope.sum,
+					transactions: $scope.transactions.length
+				}, $stateParams.year + '/' + $stateParams.month, $stateParams.day);
+				dropbox.saveDay($scope.transactions, day);
+			}
+
+			function sum() {
+				var total = 0;
+
+				$scope.transactions.forEach(function (transaction) {
+					total += parseInt(transaction.amount);
+				});
+
+				return total;
+			}
 		}
 	]);

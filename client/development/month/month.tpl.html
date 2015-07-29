@@ -1,19 +1,23 @@
 <div class="month">
 	<div ng-repeat="day in [0,1,2,3,4,5]" class="week">
 		<div ng-repeat="iDay in [0,1,2,3,4,5,6]"
-			 ng-init="iiDay = (day * 7) + iDay"
-			 ng-class="{transparent: !days[iiDay]}"
+			 ng-init="iiDay = ((day * 7) + iDay) - dayOffset"
+			 ng-class="{transparent: iiDay < 1 || iiDay > daysInMonth + 1}"
 			 class="panel panel-default day one-seventh">
-			<a ui-sref="day({year: year,month:month,day:days[iiDay].day + 1})" class="heading">
+			<a ui-sref="day({year: year,month:month,day:iiDay})" class="heading">
 				<div class="panel-heading">
-					{{days[iiDay].day + 1}}
+					{{iiDay}}
 				</div>
 			</a>
 
-			<div class="panel-body">
-				<span class="amount">
-					{{days[iiDay].amount}}
-				</span>
+			<div class="panel-body"
+				 ng-class="{transparent: !days[iiDay]}">
+				<div class="amount">
+					${{days[iiDay].amount || 0}}
+				</div>
+				<small ng-class="{transparent: !days[iiDay].transactions}">
+					{{days[iiDay].transactions}} transactions
+				</small>
 			</div>
 		</div>
 	</div>
