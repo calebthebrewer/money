@@ -93,8 +93,8 @@ gulp.task('images', function() {
 	return gulp
 		.src([
 			dev + '/images/**/*.*',
-			dev + '/favicon.ico'
-		], {base: '.'})
+			dev + '/*.ico'
+		])
 		.pipe(gulp.dest(prod));
 });
 
