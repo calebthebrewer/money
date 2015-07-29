@@ -23,7 +23,10 @@ var dev = 'client/development';
 var prod = 'client/production';
 var isProd = false;
 
-var htmlFiles = dev + '/index.html';
+var htmlFiles = [
+		dev + '/index.html',
+		dev + '/**/*.svg'
+	];
 var templateFiles = dev + '/**/*.tpl.html';
 var sassFiles = dev + '/**/*.scss';
 var jsFiles = [
@@ -82,6 +85,16 @@ gulp.task('js', function () {
 
 gulp.task('html', function () {
 	return gulp.src(htmlFiles)
+		.pipe(gulpIf(isProd, minifyHtml()))
+		.pipe(gulp.dest(prod));
+});
+
+gulp.task('images', function() {
+	return gulp
+		.src([
+			dev + '/images/**/*.*',
+			dev + '/favicon.ico'
+		], {base: '.'})
 		.pipe(gulp.dest(prod));
 });
 
@@ -140,7 +153,7 @@ gulp.task('release', ['prod'], function() {
 
 gulp.task('default', ['build', 'watch']);
 gulp.task('dev', ['run', 'lint', 'build', 'watch']);
-gulp.task('build', ['js', 'html', 'templates', 'sass', 'vendor', 'lint']);
+gulp.task('build', ['js', 'html', 'images', 'templates', 'sass', 'vendor', 'lint']);
 
 function npmThings() {
 	var npm = fs.readJsonSync('./package.json');

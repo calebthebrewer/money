@@ -7,5 +7,6 @@ angular.module('money', [
 	'templates',
 	//our stuff
 	'day',
+	'month',
 	'recurring'
 ]);

@@ -2,14 +2,29 @@
 	height: 100%;
 
 	.week {
-		height: 19%;
+		height: percentage(1/6);
 
-		.one-seventh {
-			$width: percentage(1/7);
+		.day {
 			height: 100%;
-			width: $width;
 			display: inline-block;
 			margin-bottom: 0;
+
+			.heading {
+				display: block;
+				background-color: #eee;
+			}
+
+			.amount {
+				font-size: 2em;
+			}
+		}
+
+		.one-seventh {
+			width: percentage(1/7);
+		}
+
+		.transparent {
+			visibility: hidden;
 		}
 	}
 }
