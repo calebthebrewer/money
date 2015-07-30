@@ -15,5 +15,14 @@ angular.module('month')
 			$scope.dayOffset = now.getDay();
 			$scope.daysInMonth = now.getDate();
 
+			$scope.daysOfTheWeek = [
+				"Sunday",
+				"Month",
+				"Tuesday",
+				"Wednesday",
+				"Thursday",
+				"Friday",
+				"Saturday"
+			];
 		}
 	]);

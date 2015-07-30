@@ -2,13 +2,22 @@
 	height: 100%;
 
 	.week {
-		height: percentage(1/6);
+		height: calc(percentage(1/6) - pixels(33/6));
 
 		.day {
 			height: 100%;
 			display: inline-block;
 			margin-bottom: 0;
 			background-color: rgba(255, 255, 255, 0.75);
+
+			color: initial;
+			text-decoration: initial;
+
+			&:hover {
+				.heading {
+					background-color: #ddd;
+				}
+			}
 
 			.heading {
 				display: block;
@@ -20,12 +29,22 @@
 			}
 		}
 
-		.one-seventh {
-			width: percentage(1/7);
-		}
+
 
 		.transparent {
 			visibility: hidden;
+		}
+	}
+
+	.one-seventh {
+		width: percentage(1/7);
+	}
+
+	.week-label {
+		background-color: #ccc;
+
+		.day-label {
+			display: inline-block;
 		}
 	}
 }
