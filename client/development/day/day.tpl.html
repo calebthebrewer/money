@@ -1,18 +1,18 @@
-<div class="jumbotron">
+<div class="jumbotron hidden-print">
 	<div class="container">
 		<h3>New Transaction</h3>
-		<form ng-submit="addTransaction()" class="form-inline add-transaction" role="form">
-			<div class="form-group position-relative">
+		<form ng-submit="addTransaction()" class="form-inline add-transaction row" role="form">
+			<div class="form-group position-relative col-sm-2">
 				<label class="sr-only" for="amount">dollar amount</label>
 				<span class="text-large position-absolute">$</span>
 				<input ng-model="amount" type="number" step="0.01" class="form-control input-lg" name="amount" id="amount" placeholder="amount" required>
 			</div>
-			<div class="form-group">
+			<div class="form-group col-sm-9">
 				<label class="sr-only" for="description">description</label>
 				<input ng-model="description" type="text" class="form-control input-lg" name="description" id="description" placeholder="description" required>
 			</div>
 
-			<div class="form-group">
+			<div class="form-group col-sm-1">
 				<button type="submit" class="btn btn-primary form-control input-lg">Submit</button>
 			</div>
 		</form>
@@ -21,7 +21,7 @@
 <div class="container">
 	<div class="row">
 		<h2>Day's Summary</h2>
-		<p ng-if="!transactions.length">
+		<p ng-if="!transactions.length" class="hidden-print">
 			This day seems empty.
 			<a href="#" ng-click="addRecurringTransactions()">Add recurring transactions</a>
 			to get it started.

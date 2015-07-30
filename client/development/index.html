@@ -15,7 +15,13 @@
 		</div>
 		<ul class="nav navbar-nav">
 			<li>
-				<a ui-sref="month(monthParams)" ui-sref-active="active" class="nav-link">{{month}}</a>
+				<a ui-sref="year(params)" ui-sref-active="active" class="nav-link">{{year}}</a>
+			</li>
+			<li ng-if="month">
+				<a ui-sref="month(params)" ui-sref-active="active" class="nav-link">{{niceMonth}}</a>
+			</li>
+			<li ng-if="day">
+				<a ui-sref="day(params)" ui-sref-active="active" class="nav-link">{{day}}</a>
 			</li>
 			<li>
 				<a ui-sref="recurring" ui-sref-active="active" class="nav-link">Recurring</a>

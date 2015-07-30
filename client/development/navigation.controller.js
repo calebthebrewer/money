@@ -4,18 +4,41 @@ angular.module('money')
 		'$stateParams',
 		'$rootScope',
 		function ($scope, $stateParams, $rootScope) {
+			'use strict';
+
+			var months = [
+				'January',
+				'February',
+				'March',
+				'April',
+				'May',
+				'June',
+				'July',
+				'August',
+				'September',
+				'October',
+				'November',
+				'December'
+			];
+
 			$rootScope.$on('$stateChangeSuccess', function () {
-				var now;
 				if ($stateParams.month) {
-					now = new Date($stateParams.year, $stateParams.month - 1);
+					$scope.year = $stateParams.year;
+					$scope.month = $stateParams.month;
+					$scope.niceMonth = months[$stateParams.month - 1];
+					$scope.day = $stateParams.day;
 				} else {
-					now = new Date();
+					var now = new Date();
+					$scope.year = now.getFullYear();
+					$scope.month = now.getMonth() + 1;
+					$scope.niceMonth = months[$scope.month - 1];
+					$scope.day = now.getDate();
 				}
 
-				$scope.month = now.toLocaleString('en-us', {month:'long'});
-				$scope.monthParams = {
-					year: now.getFullYear(),
-					month: now.getMonth() + 1
+				$scope.params = {
+					year: $scope.year,
+					month: $scope.month,
+					day: $scope.day
 				};
 			});
 		}

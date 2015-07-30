@@ -2,7 +2,9 @@
 	height: 100%;
 
 	.week {
-		height: calc(percentage(1/6) - pixels(33/6));
+		$percentage: percentage(1/6);
+		$pixels: 33/6;
+		height: calc(#{$percentage} - #{$pixels}px);
 
 		.day {
 			height: 100%;

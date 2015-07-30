@@ -16,13 +16,13 @@ angular.module('month')
 			$scope.daysInMonth = now.getDate();
 
 			$scope.daysOfTheWeek = [
-				"Sunday",
-				"Month",
-				"Tuesday",
-				"Wednesday",
-				"Thursday",
-				"Friday",
-				"Saturday"
+				'Sunday',
+				'Month',
+				'Tuesday',
+				'Wednesday',
+				'Thursday',
+				'Friday',
+				'Saturday'
 			];
 		}
 	]);
