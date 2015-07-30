@@ -1,0 +1,14 @@
+.year {
+	height: 100%;
+	overflow: hidden;
+
+	.month {
+		height: 25%;
+		display: inline-block;
+		margin-bottom: 0;
+		background-color: rgba(255, 255, 255, 0.75);
+
+		color: initial;
+		text-decoration: initial;
+	}
+}

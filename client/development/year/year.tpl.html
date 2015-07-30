@@ -1,0 +1,15 @@
+<div class="year">
+	<a ng-repeat="month in monthsOfTheYear track by $index"
+	   ui-sref="month({year: year,month:$index + 1})"
+	   class="panel panel-default month col-xs-4">
+		<div class="heading">
+			<div class="panel-heading text-center">
+				{{month}}
+			</div>
+		</div>
+
+		<div class="panel-body">
+
+		</div>
+	</a>
+</div>
