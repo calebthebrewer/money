@@ -112,7 +112,7 @@ angular.module('money')
 					$http
 						.get(
 						'https://api-content.dropbox.com/1/files/auto/' + path + '.json' +
-						'?access_token=' + token, {cache: true}
+						'?access_token=' + token
 					)
 						.success(resolve)
 						.error(reject);
