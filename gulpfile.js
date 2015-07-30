@@ -61,7 +61,7 @@ gulp.task('run', function () {
 
 gulp.task('sass', function () {
 	return gulp.src(sassFiles)
-		.pipe(sass())
+		.pipe(sass().on('error', sass.logError))
 		.pipe(csslint({
 			'adjoining-classes': false,
 			'box-model': false
