@@ -7,11 +7,11 @@
 	<link rel="stylesheet" href="vendor/vendor.css">
 	<link rel="stylesheet" href="app.css">
 </head>
-<body ng-app="money">
-<nav ng-controller="navigation" class="navbar navbar-inverse navbar-fixed-top">
+<body ng-app="money" ng-controller="money">
+<nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header col-sm-2 col-xs-4">
-			<a href="#/home" class="navbar-brand">Money</a>
+			<a ui-sref="home" class="navbar-brand">Money</a>
 		</div>
 		<ul class="nav navbar-nav">
 			<li>
@@ -22,9 +22,6 @@
 			</li>
 			<li ng-if="day">
 				<a ui-sref="day(params)" ui-sref-active="active" class="nav-link">{{day}}</a>
-			</li>
-			<li>
-				<a ui-sref="recurring" ui-sref-active="active" class="nav-link">Recurring</a>
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
@@ -46,7 +43,7 @@
 		</ul>
 	</div>
 </nav>
-<div class="main-view" ui-view></div>
+<div class="main-view {{state}}" ui-view></div>
 <script src="vendor/vendor.js"></script>
 <script src="templates.js"></script>
 <script src="app.js"></script>

@@ -6,6 +6,6 @@ angular.module('home')
 
 			$stateProvider
 				.state('home', {
-					url: '/home'
+					url: '/'
 				});
 		}]);

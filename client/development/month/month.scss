@@ -1,52 +1,48 @@
-.month {
-	height: 100%;
+.week {
+	$percentage: percentage(1/6);
+	$pixels: 33/6;
+	height: calc(#{$percentage} - #{$pixels}px);
 
-	.week {
-		$percentage: percentage(1/6);
-		$pixels: 33/6;
-		height: calc(#{$percentage} - #{$pixels}px);
+	.day {
+		height: 100%;
+		display: inline-block;
+		margin-bottom: 0;
+		background-color: rgba(255, 255, 255, 0.75);
 
-		.day {
-			height: 100%;
-			display: inline-block;
-			margin-bottom: 0;
-			background-color: rgba(255, 255, 255, 0.75);
+		color: initial;
+		text-decoration: initial;
 
-			color: initial;
-			text-decoration: initial;
-
-			&:hover {
-				.heading {
-					background-color: #ddd;
-				}
-			}
-
+		&:hover {
 			.heading {
-				display: block;
-				background-color: #eee;
-			}
-
-			.amount {
-				font-size: 2em;
+				background-color: #ddd;
 			}
 		}
 
+		.heading {
+			display: block;
+			background-color: #eee;
+		}
 
-
-		.transparent {
-			visibility: hidden;
+		.amount {
+			font-size: 2em;
 		}
 	}
 
-	.one-seventh {
-		width: percentage(1/7);
+
+
+	.transparent {
+		visibility: hidden;
 	}
+}
 
-	.week-label {
-		background-color: #ccc;
+.one-seventh {
+	width: percentage(1/7);
+}
 
-		.day-label {
-			display: inline-block;
-		}
+.week-label {
+	background-color: #ccc;
+
+	.day-label {
+		display: inline-block;
 	}
 }

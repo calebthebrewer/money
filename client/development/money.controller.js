@@ -1,9 +1,10 @@
 angular.module('money')
-.controller('navigation', [
+.controller('money', [
 		'$scope',
+		'$state',
 		'$stateParams',
 		'$rootScope',
-		function ($scope, $stateParams, $rootScope) {
+		function ($scope, $state, $stateParams, $rootScope) {
 			'use strict';
 
 			var months = [
@@ -22,7 +23,7 @@ angular.module('money')
 			];
 
 			$rootScope.$on('$stateChangeSuccess', function () {
-				if ($stateParams.month) {
+				if ($stateParams.year) {
 					$scope.year = $stateParams.year;
 					$scope.month = $stateParams.month;
 					$scope.niceMonth = months[$stateParams.month - 1];
@@ -40,6 +41,8 @@ angular.module('money')
 					month: $scope.month,
 					day: $scope.day
 				};
+
+				$scope.state = $state.current.name;
 			});
 		}
 	]);

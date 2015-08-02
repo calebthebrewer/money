@@ -18,6 +18,7 @@ var gulpIf = require('gulp-if');
 var run = require('run-sequence');
 var zip = require('gulp-zip');
 var fs = require('fs-extra');
+var wrapper = require('gulp-wrapper');
 
 var dev = 'client/development';
 var prod = 'client/production';
@@ -61,6 +62,17 @@ gulp.task('run', function () {
 
 gulp.task('sass', function () {
 	return gulp.src(sassFiles)
+		.pipe(wrapper({
+			// this wraps files in a class named after the directory, except for files in the 'development' directory
+			header: function(file) {
+				var name = file.path.split(/[/\\]/);
+				this.name = name[name.length - 2];
+				return this.name === 'development' ? '' : '.' + this.name + ' {';
+			},
+			footer: function() {
+				return this.name === 'development' ? '' : '}';
+			}
+		}))
 		.pipe(sass().on('error', sass.logError))
 		.pipe(csslint({
 			'adjoining-classes': false,
