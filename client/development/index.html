@@ -25,20 +25,10 @@
 			</li>
 		</ul>
 		<ul class="nav navbar-nav navbar-right">
-			<li dropdown class="dropdown">
-				<a dropdown-toggle href="#" class="dropdown-toggle" role="button" aria-haspopup="true">
+			<li>
+				<a ui-sref="settings">
 					<span class="glyphicon glyphicon-cog"></span>
 				</a>
-				<ul ng-controller="integrations" class="dropdown-menu">
-					<li>
-						<a ng-click="authenticate()" href="#">
-							<span class="glyphicon"
-								  ng-class="{'glyphicon-share': !integrations['dropbox'], 'glyphicon-check': integrations['dropbox']}">
-							</span>
-							Dropbox
-						</a>
-					</li>
-				</ul>
 			</li>
 		</ul>
 	</div>
