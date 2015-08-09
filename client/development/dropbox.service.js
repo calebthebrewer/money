@@ -2,9 +2,11 @@ angular.module('money')
 	.service('dropbox', [
 		'$http',
 		'$q',
-		function ($http, $q) {
+		'$cacheFactory',
+		function ($http, $q, $cacheFactory) {
 			'use strict';
 
+			var dropboxCache = $cacheFactory('dropbox');
 			var self;
 
 			this.authenticate = function authenticate() {
@@ -109,13 +111,21 @@ angular.module('money')
 						return reject();
 					}
 
-					$http
-						.get(
-						'https://api-content.dropbox.com/1/files/auto/' + path + '.json' +
-						'?access_token=' + token
-					)
-						.success(resolve)
-						.error(reject);
+					var resource = 'https://api-content.dropbox.com/1/files/auto/' + path + '.json' +
+						'?access_token=' + token;
+					var response = dropboxCache.get(resource);
+
+					if (response) {
+						resolve(response);
+					} else {
+						$http
+							.get(resource)
+							.success(function (response) {
+								dropboxCache.put(resource, response);
+								resolve(response);
+							})
+							.error(reject);
+					}
 				});
 			}
 
@@ -126,13 +136,15 @@ angular.module('money')
 						return reject();
 					}
 
+					var resource = 'https://api-content.dropbox.com/1/files_put/auto/' + path + '.json' +
+						'?overwrite=true&access_token=' + token;
+
 					$http
-						.post(
-						'https://api-content.dropbox.com/1/files_put/auto/' + path + '.json' +
-						'?overwrite=true&access_token=' + token,
-						data
-					)
-						.success(resolve)
+						.post(resource,	data)
+						.success(function (response) {
+							dropboxCache.put(resource, response);
+							resolve(response);
+						})
 						.error(reject);
 				});
 			}
