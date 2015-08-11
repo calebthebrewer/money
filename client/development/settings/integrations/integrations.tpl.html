@@ -1,0 +1,28 @@
+<ul class="list-group">
+	<li class="list-group-item">
+		<h3 class="list-group-item-heading">Dropbox</h3>
+		<div class="list-group-item-text">
+			Connect Money to your Dropbox account to store your transactions in your personal cloud.
+			<span class="btn-group pull-right">
+				<label ng-click="connect()"
+					   class="btn btn-default"
+					   ng-class="{'btn-success': dropboxStatus}"
+					   ng-model="dropboxStatus"
+					   btn-radio="true">Connect{{dropboxStatus ? 'ed' : ''}}</label>
+				<label ng-click="disconnect()"
+					   class="btn btn-default"
+					   ng-class="{'btn-danger': !dropboxStatus}"
+					   ng-model="dropboxStatus"
+					   btn-radio="false">Disconnect{{dropboxStatus ? '' : 'ed'}}</label>
+			</span>
+		</div>
+
+	</li>
+</ul>
+<p>
+	Don't see your favorite service listed here? Open an
+	<a href="https://github.com/calebthebrewer/money/issues">
+		issue on Github
+	</a>
+	or, better yet, submit a pull request!
+</p>

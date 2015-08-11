@@ -6,7 +6,7 @@ angular.module('month')
 
 			$stateProvider
 				.state('month', {
-					url: '/:year/:month',
+					url: '/{year:[0-9]{4}}/:month',
 					templateUrl: 'month/month.tpl.html',
 					controller: 'month',
 					reloadOnSearch: true,

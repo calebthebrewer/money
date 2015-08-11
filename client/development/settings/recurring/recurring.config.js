@@ -5,9 +5,9 @@ angular.module('recurring')
 			'use strict';
 
 			$stateProvider
-				.state('recurring', {
+				.state('settings.recurring', {
 					url: '/recurring',
-					templateUrl: 'recurring/recurring.tpl.html',
+					templateUrl: 'settings/recurring/recurring.tpl.html',
 					controller: 'recurring',
 					resolve: {
 						transactions: [

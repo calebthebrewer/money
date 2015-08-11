@@ -1,0 +1,48 @@
+<h1>Recurring Transactions</h1>
+<table class="table">
+	<thead>
+	<tr>
+		<th>Amount</th>
+		<th>Description</th>
+		<th>Frequency</th>
+	</tr>
+	</thead>
+	<tbody>
+	<tr ng-repeat="transaction in recurringTransactions track by $index" ng-class="{'text-danger': sum()<0, 'text-success': sum()>1}">
+		<td>${{transaction.amount}}</td>
+		<td>{{transaction.description}}</td>
+		<td>{{transaction.frequency}}</td>
+		<td class="text-right">
+			<button ng-click="removeRecurringTransaction($index)"
+					role="button"
+					class="btn btn-danger">
+				<span class="glyphicon glyphicon-remove"></span>
+			</button>
+		</td>
+	</tr>
+	</tbody>
+</table>
+<form ng-submit="addRecurringTransaction()" class="form-inline add-transaction" role="form">
+
+	<div class="form-group position-relative col-sm-2">
+		<label class="sr-only" for="amount">dollar amount</label>
+		<span class="text-large position-absolute">$</span>
+		<input ng-model="amount" type="number" class="form-control input-lg" name="amount" id="amount" placeholder="amount" required>
+	</div>
+	<div class="form-group col-sm-7">
+		<label class="sr-only" for="description">description</label>
+		<input ng-model="description" type="text" class="form-control input-lg" name="description" id="description" placeholder="description" required>
+	</div>
+	<div class="form-group col-sm-2">
+		<select ng-model="frequency" ng-init="frequency='daily'" class="form-control input-lg">
+			<option value="daily">daily</option>
+			<option value="weekly">weekly</option>
+			<option value="monthly">monthly</option>
+			<option value="yearly">yearly</option>
+		</select>
+	</div>
+
+	<div class="form-group col-sm-1">
+		<button type="submit" class="btn btn-primary form-control input-lg">Submit</button>
+	</div>
+</form>
