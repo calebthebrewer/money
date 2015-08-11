@@ -1,5 +1,6 @@
 angular.module('money', [
 	//vendor stuff
+	'ngAnimate',
 	'ui.bootstrap',
 	'ui.router',
 	'luegg.directives',

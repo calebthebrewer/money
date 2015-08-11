@@ -5,6 +5,7 @@ html {
 body {
 	height: 100%;
 	background-color: #ddd;
+  	overflow-x: hidden;
 }
 
 button {
@@ -49,5 +50,20 @@ input[type="number"] {
 	bottom: 0;
 	background: linear-gradient(to right, transparent, #2ecc71, transparent);
 	animation: left-to-right-slide 2.5s infinite;
+  }
+}
+
+.slide {
+  position: relative;
+  overflow: hidden;
+  &.ng-enter {
+	transition: all cubic-bezier(0.230, 1.000, 0.320, 1.000) .5s;
+	left: 15px;
+	opacity: 0;
+
+	&.ng-enter-active {
+	  left: 0;
+	  opacity: 1;
+	}
   }
 }
