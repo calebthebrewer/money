@@ -12,12 +12,14 @@ angular.module('integrations')
 			}
 
 			$scope.connect = function connect() {
-				dropbox.authenticate();
+				dropbox
+					.authenticate()
+					.then(document.location.reload.bind(document.location));
 			};
 
 			$scope.disconnect = function disconnect() {
 				dropbox.setToken('');
-				$scope.dropboxStatus = false;
+				document.location.reload();
 			};
 		}
 	]);
