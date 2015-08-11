@@ -94,6 +94,15 @@ angular.module('money')
 					});
 			};
 
+			this.getYear = function getYear(year) {
+				if (!year) {
+					year = today(true, true);
+				}
+
+				// this path is different because we keep years within their directory
+				return getDropbox(year + '/' + year);
+			};
+
 			this.getRecurring = function getRecurring() {
 				return getDropbox('recurring');
 			};
@@ -149,9 +158,10 @@ angular.module('money')
 				});
 			}
 
-			function today(noDay) {
+			function today(noDay, noMonth) {
 				var date = new Date();
-				return date.getFullYear() + '/' + (date.getMonth() + 1) +
+				return date.getFullYear() +
+					(noMonth) ? '' : '/' + (date.getMonth() + 1) +
 					(noDay) ? '' : '/' + date.getDate();
 			}
 		}
