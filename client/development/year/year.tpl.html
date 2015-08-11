@@ -11,11 +11,11 @@
 		<svg ng-if="months[$index + 1]" width="100%" height="50%" class="month-chart">
 			<line x1="0" y1="50%" x2="100%" y2="50%" class="month-chart-line"></line>
 			<rect ng-repeat="(day, amount) in months[$index + 1]"
-				  ng-init="width = 100 / daysInMonth[$index];height = (Math.abs(amount.amount) / maxAmount) * 100"
+				  ng-init="width = 100 / daysInMonth[$index + 1];height = (Math.abs(amount.amount) / maxAmount) * 100"
 				  ng-attr-fill="{{amount.amount > 0 ? '#393' : '#e51400'}}"
 				  ng-attr-height="{{height}}"
 				  ng-attr-width="{{width}}%"
-				  ng-attr-x="{{day * width}}%"
+				  ng-attr-x="{{(day - 1) * width}}%"
 				  ng-attr-y="{{amount.amount > 0 ? 50 - height : 50}}%">
 			</rect>
 		</svg>
