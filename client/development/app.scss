@@ -33,3 +33,21 @@ input[type="number"] {
 .active {
 	background-color: #333;
 }
+
+@keyframes left-to-right-slide {
+  0% { left: -10%; }
+  50% { left: 90%; }
+  100% {left: -10%; }
+}
+
+.loading {
+  overflow: hidden;
+  &:after {
+	position: absolute;
+	height: 2px;
+	width: 20%;
+	bottom: 0;
+	background: linear-gradient(to right, transparent, #2ecc71, transparent);
+	animation: left-to-right-slide 2.5s infinite;
+  }
+}

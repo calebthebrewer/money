@@ -21,7 +21,15 @@ angular.module('money')
 				'December'
 			];
 
+			$scope.loading = false;
+
+			$rootScope.$on('$stateChangeStart', function() {
+				$scope.loading = true;
+			});
+
 			$rootScope.$on('$stateChangeSuccess', function () {
+				$scope.loading = false;
+
 				if ($stateParams.month) {
 					$scope.year = $stateParams.year;
 					$scope.month = $stateParams.month;
