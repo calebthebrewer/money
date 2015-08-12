@@ -2,14 +2,13 @@
 <html>
 <head>
 	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="viewport" content="width=device-width, initial-scale=.75">
 	<title>Money</title>
 	<link rel="stylesheet" href="vendor/vendor.css">
 	<link rel="stylesheet" href="app.css">
 </head>
 <body ng-app="money">
-<nav ng-controller="navigation" ng-class="{loading: loading}" class="navbar navbar-inverse navbar-fixed-top">
-	<div class="container-fluid">
+<nav ng-cloak ng-controller="navigation" ng-class="{loading: loading}" class="navbar navbar-inverse navbar-fixed-top">
 		<div class="navbar-header col-sm-2 col-xs-4">
 			<a href="#/home" class="navbar-brand">Money</a>
 		</div>
@@ -31,7 +30,6 @@
 				</a>
 			</li>
 		</ul>
-	</div>
 </nav>
 <div class="main-view slide" ui-view></div>
 <script src="vendor/vendor.js"></script>

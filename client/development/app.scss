@@ -12,6 +12,14 @@ button {
 	text-align: center;
 }
 
+.navbar {
+  border-radius: 0 !important;
+}
+
+.navbar-right {
+  margin-right: auto !important;
+}
+
 .main-view {
 	padding-top: 50px;
 	height: 100%;
@@ -55,7 +63,6 @@ input[type="number"] {
 
 .slide {
   position: relative;
-  overflow: hidden;
   &.ng-enter {
 	transition: all cubic-bezier(0.230, 1.000, 0.320, 1.000) .5s;
 	left: 15px;

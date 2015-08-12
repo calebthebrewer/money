@@ -45,19 +45,19 @@
 		<li ng-repeat="transaction in transactions track by $index"
 			class="list-group-item row transaction {{transaction.type}}"
 			ng-class="{'text-danger': transaction.amount<0, 'text-success': transaction.amount>1}">
-			<div class="col-sm-2">
+			<div class="col-xs-2">
 				${{transaction.amount}}
 			</div>
-			<div class="col-sm-7">
+			<div class="col-xs-7">
 			<span ng-if="transaction.recurring"
 				  title="Recurring Transaction"
 				  class="glyphicon glyphicon-repeat"></span>
 				{{transaction.description}}
 			</div>
-			<div class="col-sm-2">
+			<div class="col-xs-2">
 				{{transaction.timestamp | date:'h:mm on M/dd'}}
 			</div>
-			<div class="col-sm-1 text-right">
+			<div class="col-xs-1 text-right">
 				<button ng-click="removeTransaction($index)" class="text-danger btn-link">
 					<span class="glyphicon glyphicon-remove"></span>
 				</button>
