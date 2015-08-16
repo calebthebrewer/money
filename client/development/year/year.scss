@@ -12,8 +12,12 @@
 	text-decoration: initial;
 	position: relative;
 
+	.panel-body {
+	  padding: 0;
+	}
+
 	.amount {
-	  font-size: 5vw;
+	  font-size: 5vh;
 	}
   }
 }

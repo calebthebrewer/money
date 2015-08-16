@@ -5,6 +5,7 @@
 		$percentage: percentage(1/6);
 		$pixels: 33/6;
 		height: calc(#{$percentage} - #{$pixels}px);
+		min-height: 140px;
 
 		.day {
 			height: 100%;
