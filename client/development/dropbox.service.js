@@ -76,8 +76,8 @@ angular.module('money')
 				return getDropbox(month);
 			};
 
-			this.saveMonthDay = function saveMonth(data, month, day) {
-				this.getMonth(month)
+			this.saveMonthDay = function saveMonthDay(data, month, day) {
+				return this.getMonth(month)
 					.then(function(days) {
 						days[day] = data;
 
@@ -101,6 +101,24 @@ angular.module('money')
 
 				// this path is different because we keep years within their directory
 				return getDropbox(year + '/' + year);
+			};
+
+			this.saveYearMonth = function saveYearMonth(data, year, month) {
+				return this.getYear(year)
+					.then(function (months) {
+						months[month] = data;
+
+						return months;
+					})
+					.catch(function () {
+						var months = {};
+						months[month] = data;
+
+						return months;
+					})
+					.then(function (months) {
+						return postDropbox(year + '/' + year, months);
+					});
 			};
 
 			this.getRecurring = function getRecurring() {

@@ -12,23 +12,8 @@
 	text-decoration: initial;
 	position: relative;
 
-	&:hover {
-	  .month-chart {
-		opacity: 1;
-	  }
-	}
-
-	.month-chart-line {
-	  stroke: gray;
-	  stroke-width: 1;
-	}
-
-	.month-chart {
-	  opacity: .8;
-	  position: absolute;
-	  left: 0px;
-	  bottom: 5px;
-	  padding: 5px;
+	.amount {
+	  font-size: 5vw;
 	}
   }
 }

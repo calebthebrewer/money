@@ -86,11 +86,31 @@ angular.module('day')
 			function saveDay() {
 				$scope.sum = sum();
 
-				dropbox.saveMonthDay({
-					amount: $scope.sum,
-					transactions: $scope.transactions.length
-				}, $stateParams.year + '/' + $stateParams.month, $stateParams.day);
 				dropbox.saveDay($scope.transactions, day);
+
+				dropbox
+					.saveMonthDay({
+						amount: $scope.sum,
+						transactions: $scope.transactions.length
+					}, $stateParams.year + '/' + $stateParams.month, $stateParams.day)
+					.then(function () {
+						dropbox
+							.getMonth($stateParams.year + '/' + $stateParams.month)
+							.then(function (month) {
+								var monthAmount = 0;
+								var monthTransactions = 0;
+
+								for (var day in month) {
+									monthAmount += month[day].amount;
+									monthTransactions += month[day].transactions;
+								}
+
+								dropbox.saveYearMonth({
+									amount: monthAmount,
+									transactions: monthTransactions
+								}, $stateParams.year, $stateParams.month);
+							});
+					});
 			}
 
 			function sum() {
