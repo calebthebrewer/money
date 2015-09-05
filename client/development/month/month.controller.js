@@ -14,6 +14,9 @@ angular.module('month')
 			$scope.days = days;
 			// subtract two because it is zero indexed and we don't want to display the zero
 			$scope.dayOffset = now.getDay() - 2;
+			if ($scope.dayOffset < 0) {
+				$scope.dayOffset = 6 + $scope.dayOffset;
+			}
 			$scope.daysInMonth = now.getDate();
 
 			$scope.daysOfTheWeek = [
