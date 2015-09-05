@@ -6,13 +6,14 @@ angular.module('month')
 		function ($scope, $stateParams, days) {
 			'use strict';
 
-			var now = new Date($stateParams.year, $stateParams.month - 1, 0);
+			var now = new Date($stateParams.year, $stateParams.month, 0);
 
 			$scope.year = $stateParams.year;
 			$scope.month = $stateParams.month;
 
 			$scope.days = days;
-			$scope.dayOffset = now.getDay();
+			// subtract two because it is zero indexed and we don't want to display the zero
+			$scope.dayOffset = now.getDay() - 2;
 			$scope.daysInMonth = now.getDate();
 
 			$scope.daysOfTheWeek = [

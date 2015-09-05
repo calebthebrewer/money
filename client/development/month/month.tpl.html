@@ -8,7 +8,7 @@
 		<a ng-repeat="iDay in [0,1,2,3,4,5,6]"
 			 ng-init="iiDay = ((day * 7) + iDay) - dayOffset"
 		   ui-sref="day({year: year,month:month,day:iiDay})"
-			 ng-class="{transparent: iiDay < 1 || iiDay > daysInMonth + 1}"
+			 ng-class="{transparent: iiDay < 1 || iiDay > daysInMonth}"
 			 class="panel panel-default day one-seventh">
 			<div class="heading">
 				<div class="panel-heading">
