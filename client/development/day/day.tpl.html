@@ -23,7 +23,7 @@
 		<h2>Day's Summary</h2>
 		<p ng-if="!transactions.length" class="hidden-print">
 			This day seems empty.
-			<a href="#" ng-click="addRecurringTransactions()">Add recurring transactions</a>
+			<button ng-click="addRecurringTransactions()" class="btn btn-link">Add recurring transactions</button>
 			to get it started.
 		</p>
 		<table class="table">
