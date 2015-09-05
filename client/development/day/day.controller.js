@@ -10,6 +10,7 @@ angular.module('day')
 			var day = $stateParams.year + '/' + $stateParams.month + '/' + $stateParams.day;
 
 			$scope.transactions = transactions;
+			$scope.isDirty = false;
 
 			$scope.sum = sum();
 
@@ -36,15 +37,19 @@ angular.module('day')
 
 			function actuallyAddTransaction(transaction) {
 				$scope.transactions.push(transaction);
-				saveDay();
+				$scope.isDirty = true;
 				$scope.amount = null;
 				$scope.description = null;
 				$scope.time = new Date();
 			}
 
+			$scope.save = function save() {
+				saveDay();
+			};
+
 			$scope.removeTransaction = function removeTransaction(index) {
 				$scope.transactions.splice(index, 1);
-				saveDay();
+				$scope.isDirty = true;
 			};
 
 			$scope.addRecurringTransactions = function addRecurringTransactions() {
@@ -75,11 +80,15 @@ angular.module('day')
 									break;
 							}
 
-							transaction.amount = Math.round((transaction.amount / divisor) * 100) / 100;
-							$scope.transactions.push(transaction);
+							$scope.transactions.push({
+								amount: Math.round((transaction.amount / divisor) * 100) / 100,
+								description: transaction.description,
+								recurring: true
+							});
 						});
 
-						saveDay();
+						$scope.isDirty = true;
+						$scope.sum = sum();
 					});
 			};
 
@@ -94,6 +103,7 @@ angular.module('day')
 						transactions: $scope.transactions.length
 					}, $stateParams.year + '/' + $stateParams.month, $stateParams.day)
 					.then(function () {
+						$scope.isDirty = false;
 						dropbox
 							.getMonth($stateParams.year + '/' + $stateParams.month)
 							.then(function (month) {
