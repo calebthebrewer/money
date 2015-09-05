@@ -23,12 +23,14 @@ angular.module('day')
 
 				if (navigator.geolocation) {
 					navigator.geolocation.getCurrentPosition(function (location) {
-						transaction.location = {
-							longitude: location.coords.longitude,
-							latitude: location.coords.latitude
-						};
+						$scope.$apply(function() {
+							transaction.location = {
+								longitude: location.coords.longitude,
+								latitude: location.coords.latitude
+							};
 
-						actuallyAddTransaction(transaction);
+							actuallyAddTransaction(transaction);
+						});
 					});
 				} else {
 					actuallyAddTransaction(transaction);
@@ -41,6 +43,7 @@ angular.module('day')
 				$scope.amount = null;
 				$scope.description = null;
 				$scope.time = new Date();
+				$scope.sum = sum();
 			}
 
 			$scope.save = function save() {
@@ -50,6 +53,7 @@ angular.module('day')
 			$scope.removeTransaction = function removeTransaction(index) {
 				$scope.transactions.splice(index, 1);
 				$scope.isDirty = true;
+				$scope.sum = sum();
 			};
 
 			$scope.addRecurringTransactions = function addRecurringTransactions() {
@@ -80,21 +84,17 @@ angular.module('day')
 									break;
 							}
 
-							$scope.transactions.push({
+							actuallyAddTransaction({
 								amount: Math.round((transaction.amount / divisor) * 100) / 100,
 								description: transaction.description,
 								recurring: true
 							});
 						});
-
-						$scope.isDirty = true;
-						$scope.sum = sum();
 					});
 			};
 
 			function saveDay() {
 				$scope.sum = sum();
-
 				dropbox.saveDay($scope.transactions, day);
 
 				dropbox
